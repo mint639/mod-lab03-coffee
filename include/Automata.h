@@ -40,7 +40,7 @@ class Automata {
     State current_state;
  public:
     Automata(map<pair<State, Act>, State> transitions, State start_state);
-    Automata(){}
+    Automata() {}
     void do_transition(Act act);
     State getState();
 };
