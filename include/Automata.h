@@ -36,10 +36,10 @@ enum class Product {
 //Finite State Machine implementation
 template<typename State, typename Act>
 class Automata {
-    std::map<pair<State, Act>, State> transitions;
+    std::map<std::pair<State, Act>, State> transitions;
     State current_state;
  public:
-    Automata(std::map<pair<State, Act>, State> transitions, State start_state);
+    Automata(std::map<std::pair<State, Act>, State> transitions, State start_state);
     Automata() {}
     void do_transition(Act act);
     State getState();
