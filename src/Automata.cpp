@@ -42,13 +42,17 @@ void CoffeeMachine::create_engine() {
     transitions[std::pair<State, Act>(State::WAIT, Act::OFFACT)]
         = State::OFF;
     transitions[std::pair<State, Act>(State::WAIT, Act::COIN)] = State::ACCEPT;
-    transitions[std::pair<State, Act>(State::ACCEPT, Act::CANCEL)] = State::WAIT;
-    transitions[std::pair<State, Act>(State::ACCEPT, Act::COIN)] = State::ACCEPT;
-    transitions[std::pair<State, Act>(State::ACCEPT, Act::TRUECHECK)] = State::READY;
+    transitions[std::pair<State, Act>(State::ACCEPT, Act::CANCEL)]
+        = State::WAIT;
+    transitions[std::pair<State, Act>(State::ACCEPT, Act::COIN)]
+        = State::ACCEPT;
+    transitions[std::pair<State, Act>(State::ACCEPT, Act::TRUECHECK)]
+        = State::READY;
     transitions[std::pair<State, Act>(State::ACCEPT, Act::FALSECHECK)]
         = State::ACCEPT;
     transitions[std::pair<State, Act>(State::READY, Act::CANCEL)] = State::WAIT;
-    transitions[std::pair<State, Act>(State::READY, Act::COOKACT)] = State::COOK;
+    transitions[std::pair<State, Act>(State::READY, Act::COOKACT)]
+        = State::COOK;
     transitions[std::pair<State, Act>(State::COOK, Act::FINISH)] = State::WAIT;
     engine = Automata<State, Act>(transitions, State::OFF);
 }
