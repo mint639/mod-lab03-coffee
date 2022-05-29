@@ -4,17 +4,17 @@
 std::string product_to_str(Product product) {
     switch (product) {
     case Product::LATTE:
-        return string("Latte");
+        return std::string("Latte");
     case Product::CAPPUCINO:
-        return string("Cappucino");
+        return std::string("Cappucino");
     case Product::AMERICANO:
-        return string("Americano");
+        return std::string("Americano");
     case Product::ESPRESSO:
-        return string("Espresso");
+        return std::string("Espresso");
     case Product::FLATWHITE:
-        return string("Flatwhite");
+        return std::string("Flatwhite");
     default:
-        return string("Some unknown Coffee");
+        return std::string("Some unknown Coffee");
     }
 }
 
