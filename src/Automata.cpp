@@ -39,7 +39,8 @@ CoffeeMachine::CoffeeMachine() {
 void CoffeeMachine::create_engine() {
     map<pair<State, Act>, State> transitions;
     transitions[pair<State, Act>(State::OFF, Act::ON)] = State::WAIT;
-    transitions[pair<State, Act>(State::WAIT, Act::OFFACT)] = State::OFF;
+    transitions[pair<State, Act>(State::WAIT, Act::OFFACT)]
+        = State::OFF;
     transitions[pair<State, Act>(State::WAIT, Act::COIN)] = State::ACCEPT;
     transitions[pair<State, Act>(State::ACCEPT, Act::CANCEL)] = State::WAIT;
     transitions[pair<State, Act>(State::ACCEPT, Act::COIN)] = State::ACCEPT;
