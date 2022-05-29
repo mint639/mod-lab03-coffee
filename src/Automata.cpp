@@ -77,7 +77,7 @@ void CoffeeMachine::coin(int value) {
 void CoffeeMachine::choice(Product product) {
     if (cash < menu[product]) {
         printf("\nNot enough money for chosen product. You need %s",
-               to_string(menu[product] - cash).c_str());
+               std::__cxx11::to_string(menu[product] - cash).c_str());
         this->engine.do_transition(Act::FALSECHECK);
     } else {
         chosen_product = product;
