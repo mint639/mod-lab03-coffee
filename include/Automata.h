@@ -39,7 +39,8 @@ class Automata {
     std::map<std::pair<State, Act>, State> transitions;
     State current_state;
  public:
-    Automata(std::map<std::pair<State, Act>, State> transitions, State start_state);
+    Automata(std::map<std::pair<State, Act>,
+    State> transitions, State start_state);
     Automata() {}
     void do_transition(Act act);
     State getState();
