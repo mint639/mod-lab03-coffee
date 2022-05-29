@@ -56,7 +56,7 @@ class CoffeeMachine {
     void cook();
     void finish();
     State getState();
-    CoffeeMachine(map<Product, int> menu);
+    explicit CoffeeMachine(map<Product, int> menu);
     //standart menu
     CoffeeMachine();
  private:
