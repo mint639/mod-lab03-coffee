@@ -1,3 +1,4 @@
+// Copyright 2022 UNN-IASR
 #include "Automata.h"
 using namespace std;
 string product_to_str(Product product) {
@@ -43,7 +44,8 @@ void CoffeeMachine::create_engine() {
     transitions[pair<State, Act>(State::ACCEPT, Act::CANCEL)] = State::WAIT;
     transitions[pair<State, Act>(State::ACCEPT, Act::COIN)] = State::ACCEPT;
     transitions[pair<State, Act>(State::ACCEPT, Act::TRUECHECK)] = State::READY;
-    transitions[pair<State, Act>(State::ACCEPT, Act::FALSECHECK)] = State::ACCEPT;
+    transitions[pair<State, Act>(State::ACCEPT, Act::FALSECHECK)] 
+        = State::ACCEPT;
     transitions[pair<State, Act>(State::READY, Act::CANCEL)] = State::WAIT;
     transitions[pair<State, Act>(State::READY, Act::COOKACT)] = State::COOK;
     transitions[pair<State, Act>(State::COOK, Act::FINISH)] = State::WAIT;
@@ -69,17 +71,17 @@ void CoffeeMachine::coin(int value) {
 
 void CoffeeMachine::choice(Product product) {
     if (cash < menu[product]) {
-        printf("\nNot enough money for chosen product. You need %s", to_string(menu[product] - cash).c_str());
+        printf("\nNot enough money for chosen product. You need %s", 
+               to_string(menu[product] - cash).c_str());
         this->engine.do_transition(Act::FALSECHECK);
-    }
-    else {
+    } else {
         chosen_product = product;
         printf("\nTake your spare");
         this->engine.do_transition(Act::TRUECHECK);
     }
 }
 
-void CoffeeMachine::cancel(){
+void CoffeeMachine::cancel() {
     printf("\n...the sound of falling coins...\nPlease, take your money back");
     this->engine.do_transition(Act::CANCEL);
 }
@@ -100,17 +102,18 @@ void CoffeeMachine::printMenu() {
 }
 
 template<typename State, typename Act>
-Automata<State, Act>::Automata(map<pair<State, Act>, State> transitions, State start_state) {
+Automata<State, Act>::Automata(map<pair<State, Act>, State> transitions, 
+                               State start_state) {
     this->transitions = transitions;
     this->current_state = start_state;
 }
 
 template<typename State, typename Act>
 void Automata<State, Act>::do_transition(Act act) {
-    if (this->transitions.find(pair<State, Act>(this->getState(), act)) == this->transitions.end()) {
+    if (this->transitions.find(pair<State, Act>(this->getState(), act)) 
+    == this->transitions.end()) {
         throw std::invalid_argument("Recieved wrong trasition call");
-    }
-    else {
+    } else {
         this->current_state = transitions[pair<State, Act>(this->getState(), act)];
     }
 }
