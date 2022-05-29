@@ -1,3 +1,4 @@
+// Copyright 2022 UNN-IASR
 #include <vector>
 #include <map>
 using namespace std;
@@ -34,7 +35,7 @@ template<typename State, typename Act>
 class Automata {
     map<pair<State, Act>, State> transitions;
     State current_state;
-public:
+ public:
     Automata(map<pair<State, Act>, State> transitions, State start_state);
     Automata(){};
     void do_transition(Act act);
@@ -42,7 +43,7 @@ public:
 };
 
 class CoffeeMachine {
-public:
+ public:
     void on();
     void off();
     void coin(int);
@@ -55,7 +56,7 @@ public:
     CoffeeMachine(map<Product, int> menu);
     //standart menu
     CoffeeMachine();
-private:
+ private:
     int cash;
     map<Product, int> menu;
     Product chosen_product;
