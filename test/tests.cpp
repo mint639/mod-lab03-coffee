@@ -1,3 +1,4 @@
+// Copyright 2022 UNN-IASR
 #include <gtest/gtest.h>
 #include "Automata.h"
 
@@ -16,8 +17,7 @@ TEST(COFFEEMACHINE_TASK, CANCEL_1) {
     coffeemachine.on();
     coffeemachine.coin(1);
     coffeemachine.cancel();
-    EXPECT_EQ(coffeemachine.getState(), State::WAIT);
-	
+    EXPECT_EQ(coffeemachine.getState(), State::WAIT);	
 }
 
 TEST(COFFEEMACHINE_TASK, CANCEL_2) {
@@ -27,8 +27,8 @@ TEST(COFFEEMACHINE_TASK, CANCEL_2) {
     coffeemachine.choice(Product::AMERICANO);
     coffeemachine.cancel();
     EXPECT_EQ(coffeemachine.getState(), State::WAIT);
-
 }
+
 TEST(COFFEEMACHINE_TASK, WRONG_CHOICE) {
     CoffeeMachine coffeemachine = CoffeeMachine();
     coffeemachine.on();
@@ -36,6 +36,7 @@ TEST(COFFEEMACHINE_TASK, WRONG_CHOICE) {
     coffeemachine.choice(Product::CAPPUCINO);
     EXPECT_EQ(coffeemachine.getState(), State::ACCEPT);
 }
+
 TEST(COFFEEMACHINE_TASK, RIGHT_CHOICE) {
     CoffeeMachine coffeemachine = CoffeeMachine();
     coffeemachine.on();
