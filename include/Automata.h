@@ -57,7 +57,7 @@ class CoffeeMachine {
     void cook();
     void finish();
     State getState();
-    explicit CoffeeMachine(map<Product, int> menu);
+    explicit CoffeeMachine(std::map<Product, int> menu);
     //standart menu
     CoffeeMachine();
  private:
