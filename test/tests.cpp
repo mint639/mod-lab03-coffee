@@ -17,7 +17,7 @@ TEST(COFFEEMACHINE_TASK, CANCEL_1) {
     coffeemachine.on();
     coffeemachine.coin(1);
     coffeemachine.cancel();
-    EXPECT_EQ(coffeemachine.getState(), State::WAIT);	
+    EXPECT_EQ(coffeemachine.getState(), State::WAIT);
 }
 
 TEST(COFFEEMACHINE_TASK, CANCEL_2) {
