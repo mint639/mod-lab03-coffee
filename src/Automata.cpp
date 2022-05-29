@@ -114,7 +114,8 @@ void Automata<State, Act>::do_transition(Act act) {
     == this->transitions.end()) {
         throw std::invalid_argument("Recieved wrong trasition call");
     } else {
-        this->current_state = transitions[pair<State, Act>(this->getState(), act)];
+        this->current_state = 
+        transitions[pair<State, Act>(this->getState(), act)];
     }
 }
 
