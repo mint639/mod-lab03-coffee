@@ -44,7 +44,7 @@ void CoffeeMachine::create_engine() {
     transitions[pair<State, Act>(State::ACCEPT, Act::CANCEL)] = State::WAIT;
     transitions[pair<State, Act>(State::ACCEPT, Act::COIN)] = State::ACCEPT;
     transitions[pair<State, Act>(State::ACCEPT, Act::TRUECHECK)] = State::READY;
-    transitions[pair<State, Act>(State::ACCEPT, Act::FALSECHECK)] 
+    transitions[pair<State, Act>(State::ACCEPT, Act::FALSECHECK)]
         = State::ACCEPT;
     transitions[pair<State, Act>(State::READY, Act::CANCEL)] = State::WAIT;
     transitions[pair<State, Act>(State::READY, Act::COOKACT)] = State::COOK;
@@ -71,7 +71,7 @@ void CoffeeMachine::coin(int value) {
 
 void CoffeeMachine::choice(Product product) {
     if (cash < menu[product]) {
-        printf("\nNot enough money for chosen product. You need %s", 
+        printf("\nNot enough money for chosen product. You need %s",
                to_string(menu[product] - cash).c_str());
         this->engine.do_transition(Act::FALSECHECK);
     } else {
@@ -102,7 +102,7 @@ void CoffeeMachine::printMenu() {
 }
 
 template<typename State, typename Act>
-Automata<State, Act>::Automata(map<pair<State, Act>, State> transitions, 
+Automata<State, Act>::Automata(map<pair<State, Act>, State> transitions,
                                State start_state) {
     this->transitions = transitions;
     this->current_state = start_state;
@@ -110,11 +110,11 @@ Automata<State, Act>::Automata(map<pair<State, Act>, State> transitions,
 
 template<typename State, typename Act>
 void Automata<State, Act>::do_transition(Act act) {
-    if (this->transitions.find(pair<State, Act>(this->getState(), act)) 
+    if (this->transitions.find(pair<State, Act>(this->getState(), act))
     == this->transitions.end()) {
         throw std::invalid_argument("Recieved wrong trasition call");
     } else {
-        this->current_state = 
+        this->current_state =
         transitions[pair<State, Act>(this->getState(), act)];
     }
 }
