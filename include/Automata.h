@@ -1,4 +1,6 @@
 // Copyright 2022 UNN-IASR
+#pragma once
+
 #include <vector>
 #include <map>
 using namespace std;
