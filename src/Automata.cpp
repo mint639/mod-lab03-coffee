@@ -107,8 +107,8 @@ void CoffeeMachine::printMenu() {
 }
 
 template<typename State, typename Act>
-Automata<State, Act>::Automata(std::map<std::pair<State, Act>, State> transitions,
-                               State start_state) {
+Automata<State, Act>::Automata(std::map<std::pair<State, Act>,
+                               State> transitions, State start_state) {
     this->transitions = transitions;
     this->current_state = start_state;
 }
